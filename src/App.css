@@ -1,0 +1,13 @@
+#titleFormLogin {
+  font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+}
+
+.smallMarginBottom { margin-bottom: 30px !important; }
+.bigMarginBottom { margin-bottom: 50px !important;}
+.smallMarginTop{ margin-top: 30px !important; }
+.bigMarginTop{ margin-top: 50px !important;  }
+
+#btnFormLogin, #btnFormSignup {
+  background-color: #0084ff;
+}
