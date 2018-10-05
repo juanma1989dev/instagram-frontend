@@ -38,7 +38,7 @@ class FormMe extends Component {
     }
 
     formSubmit = (e, updateUser) => {
-        e.preventDefault();
+        //e.preventDefault();
         updateUser({
             variables: {...this.state}
         })

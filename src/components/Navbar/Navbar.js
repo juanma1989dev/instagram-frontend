@@ -5,6 +5,10 @@ import './navbar.css';
 
 class Navbar extends Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     logout = (e) => {
         e.preventDefault();
         localStorage.removeItem("token")

@@ -61,10 +61,13 @@ class PhotoUpload extends Component {
 
     publicPhotoForm = (e, publicPhoto ) => {
         e.preventDefault();
-        publicPhoto({
+        let a = publicPhoto({
             variables: {...this.state}
+        }).then(response => {
+            this.props.history.push('/');
+        }).catch(error => {
+            console.log("Error : ", error)
         })
-
     }
 
     handleInput = (event) => {

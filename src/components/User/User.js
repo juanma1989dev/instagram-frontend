@@ -5,6 +5,8 @@ import gql from 'graphql-tag';
 import Photo from '../Photo/Photo';
 import Navbar from '../Navbar/Navbar';
 
+import './user.css';
+
 const QUERY_MY_PHOTOS = gql`
     query photosByUser($id: ID!){
         photosByUser(id: $id) {
@@ -31,7 +33,9 @@ const QUERY_ME = gql`
         me {
             id,
             name,
-            avatar
+            lastname,
+            avatar,
+            email
         }
     }
 `
@@ -42,12 +46,40 @@ class User extends Component {
         super(props);
     }
 
-    getMe = () => (
+    getNavBar= () => (
         <Query query={QUERY_ME}>
             {({loading, err, data}) =>{
                 if(loading) return 'Loaging ...'
-                if(err) return 'Error del servicio'
+                if(err) return 'Error serivce'
                 return <Navbar name={data.me.name} userId={data.me.id} avatar={data.me.avatar} />
+            }}
+        </Query>
+    )
+
+
+    getProfileUser = () => (
+        <Query query={QUERY_ME}>
+            {({loading, err, data}) =>{
+                if(loading) return 'Loaging ...'
+                if(err) return 'Error serivce'
+                return (
+                    <div className="row ">
+                        <div className="col-md-4">
+                            <img className="rounded-circle img-profile-user" src={data.me.avatar} />
+
+                        </div>
+
+                        <div className="col-md-8">
+
+                            <h3>{data.me.name} {data.me.lastname}</h3>
+
+                            <h5>Contact :  {data.me.email}</h5>
+
+                        </div>
+
+
+                    </div>
+                )
             }}
         </Query>
     )
@@ -70,8 +102,11 @@ class User extends Component {
     render(){
         return(
             <div>
-                {this.getMe()}
+                {this.getNavBar()}
                 <div className="container mt-5">
+
+                    {this.getProfileUser()}
+                
                     <div className="row">
                         {this.getMyPhotos()}
                     </div>

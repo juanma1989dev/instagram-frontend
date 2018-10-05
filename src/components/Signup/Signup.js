@@ -110,7 +110,7 @@ class Signup extends Component {
 										/>
 									</div>
 				
-									<button type="submit" id="btnFormSignup" className="btn btn-primary btn-lg btn-block">Registrarme</button>
+									<button type="submit" id="btnFormSignup" className="btn btn-primary btn-lg btn-block">Register</button>
 
 									<div className="text-center bigMarginTop">
 										<Link  to="/login">Back to login</Link>

@@ -4,10 +4,7 @@ import {setContext} from 'apollo-link-context'
 import {InMemoryCache} from 'apollo-cache-inmemory'
 
 const httpLink = createHttpLink({
-    //uri : "https://instagramclonebackend-qmkuopihps.now.sh"
-    //uri :  "https://instagramclonebackend-mnjguqgtnw.now.sh "
-    //uri: "https://instagramclonebackend-wxjfzgpoax.now.sh"
-    uri : "https://instagramclonebackend-rtltqbffap.now.sh"
+    uri : "https://instagramclonebackend-lfgoegqfxt.now.sh"
 });
 
 const authLink = setContext((_,{headers})=>{

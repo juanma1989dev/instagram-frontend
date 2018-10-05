@@ -15,9 +15,8 @@ const MUTATION_LIKE = gql`
 
 class Photo extends Component {
 
-
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     }
 
     liked = (e, likePhoto) => {
@@ -25,7 +24,6 @@ class Photo extends Component {
         let photoID = e.target.getAttribute('data-photo');
         let btnNewLike = e.target.getElementsByClassName('like')[0];
         let valLikes = parseInt(btnNewLike.innerText, 10) + 1;
-        console.log(valLikes);
         likePhoto({
             variables : { photo : photoID }
         }).then(response => {
