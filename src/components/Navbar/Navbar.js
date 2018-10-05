@@ -4,6 +4,14 @@ import {Link} from 'react-router-dom';
 import './navbar.css';
 
 class Navbar extends Component {
+
+    logout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem("token")
+        this.props.history.push('/login')
+    }
+
+
     render(){
         return(
             <nav className="navbar navbar-light bg-light Navbar ">
@@ -24,7 +32,7 @@ class Navbar extends Component {
                     </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <Link to="/me" className="dropdown-item">Profile</Link>
-                        <a className="dropdown-item" href="#">Logout</a>
+                        <a className="dropdown-item" onClick={this.logout}>Logout</a>
                     </div>
                 </div>
             </nav>

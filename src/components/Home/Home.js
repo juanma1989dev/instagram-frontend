@@ -57,7 +57,9 @@ class Home extends Component {
                 if(loading) return 'Cargado tus fotos'
                 if(err) return 'Cargado tus fotos'
                 return data.allPhotos.map(photo => <Photo id={photo.id} path_photo={photo.path_photo} 
-                        user={photo.user} title={photo.title} description={photo.description}  /> 
+                        user={photo.user} title={photo.title} description={photo.description}
+                        likes={photo.likes}    
+                    /> 
                 )
             }}
         </Query>

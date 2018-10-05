@@ -22,7 +22,17 @@ class Photo extends Component {
 
     liked = (e, likePhoto) => {
         e.preventDefault();
-        console.log(likePhoto);
+        let photoID = e.target.getAttribute('data-photo');
+        let btnNewLike = e.target.getElementsByClassName('like')[0];
+        let valLikes = parseInt(btnNewLike.innerText, 10) + 1;
+        console.log(valLikes);
+        likePhoto({
+            variables : { photo : photoID }
+        }).then(response => {
+            btnNewLike.innerText =  valLikes ;
+        }).catch(err => {
+            console.log("Error:", err);
+        })
     }
 
     render() {
@@ -44,7 +54,10 @@ class Photo extends Component {
                         <Mutation mutation={MUTATION_LIKE}>
                         {
                             (likePhoto, {loading, err, data}) => (
-                                <a href="#" className="btn btn-primary" onClick={(e) => this.liked(e, likePhoto) }  >Like</a>
+
+                                <a href="#" className="btn btn-primary" onClick={(e) => this.liked(e, likePhoto) }  
+                                    data-photo={this.props.id} 
+                                >Likes <strong className="like" >{this.props.likes.length} </strong> </a>
                             )
                         }
                         </Mutation>
@@ -66,6 +79,15 @@ class Photo extends Component {
                                 <p>  {this.props.description } </p>
                             </div>
                             <div className="modal-footer">
+                            <Mutation mutation={MUTATION_LIKE}>
+                            {
+                                (likePhoto, {loading, err, data}) => (
+                                    <a href="#" className="btn btn-primary" onClick={(e) => this.liked(e, likePhoto) }  
+                                        data-photo={this.props.id} 
+                                    >Likes <strong className="like">{this.props.likes.length} </strong> </a>
+                                )
+                            }
+                            </Mutation>
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
